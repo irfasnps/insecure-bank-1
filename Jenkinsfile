@@ -70,19 +70,7 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            environment {
-                GITHUB_ACCESS_TOKEN = credentials("${gitHubPOCId}")
-            }
-            steps {
-                script {
-                    cleanWs()
-                    def scmURL = "https://${GITHUB_ACCESS_TOKEN}@github.com/${gitHubOwner}/${scmRepoName}"
-                    git branch: scmBranch, url: scmURL
-                }
-            }
-        }
-
+        
         stage('Build') {
             steps {
                 echo "mvn clean compile"
