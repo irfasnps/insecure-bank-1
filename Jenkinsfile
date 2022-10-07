@@ -2,43 +2,43 @@ import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
 
 // File Enviroment
-def fileProjectName = 'my-insecure-bank'
+//def fileProjectName = 'my-insecure-bank'
 def fileBranchName = 'master'
 // IO Environment
-def ioPOCId = 'io-10-poc'
-def ioProjectName = fileProjectName
-def ioWorkflowEngineVersion = '2022.4.1'
-def ioServerURL = "https://io10.codedx.synopsys.com"
+def ioPOCId = 'Irfan-Test'
+def ioProjectName = 'my-insecure-bank'
+def ioWorkflowEngineVersion = '2022.7.0'
+def ioServerURL = "https://io11.codedx.synopsys.com"
 def ioRunAPI = "/api/ioiq/api/orchestration/runs/"
 
 // SCM - GitHub
-def gitHubPOCId = 'poc10-github'
-def gitHubOwner = 'OzViper'
+def gitHubPOCId = 'Github'
+def gitHubOwner = 'mohammedirfanma'
 def scmBranch = fileBranchName
 def scmRepoName = 'insecure-bank'
 def scmRevisionDate = ''
 
 // AST - Polaris
 def polarisConfigName = 'polaris-sipse'
-def polarisProjectName = fileProjectName
+def polarisProjectName = 'aws-insecure-bank'
 def polarisBranchName = fileBranchName
 
 // AST - Black Duck
-def blackDuckPOCId = 'blackduck-testing'
-def blackDuckProjectName = fileProjectName
+def blackDuckPOCId = 'Jenkins-BlackDuck-POC11'
+def blackDuckProjectName = 'my-insecure-bank'
 def blackDuckProjectVersion = fileBranchName
 
 // BTS Configuration
-def jiraAssignee = 'johnd'
-def jiraConfigName = 'jira-poc10'
-def jiraIssueQuery = 'resolution=Unresolved'
-def jiraProjectKey = 'IRMOB'
-def jiraProjectName = 'IRMOB'
+// def jiraAssignee = 'johnd'
+// def jiraConfigName = 'jira-poc10'
+// def jiraIssueQuery = 'resolution=Unresolved'
+// def jiraProjectKey = 'IRMOB'
+// def jiraProjectName = 'IRMOB'
 
 // Code Dx Configuration
-def codeDxConfigName = 'poc10-codedx'
-def codeDxProjectId = '2'
-def codeDxInstnceURL = 'https://poc10.codedx.synopsys.com/codedx'
+def codeDxConfigName = 'codedx-poc-11'
+def codeDxProjectId = '1'
+def codeDxInstnceURL = 'https://poc11.codedx.synopsys.com/codedx'
 def codeDxProjectAPI = '/api/projects/'
 def codeDxAnalysisEndpoint = '/analysis'
 def codeDxProjectContext = codeDxProjectId + ';branch=' + fileBranchName
@@ -93,12 +93,6 @@ pipeline {
                         configName: gitHubPOCId,
                         owner: gitHubOwner,
                         repositoryName: scmRepoName),
-                    jira(
-                        assignee: jiraAssignee,
-                        configName: jiraConfigName,
-                        issueQuery: jiraIssueQuery,
-                        projectKey: jiraProjectKey,
-                        projectName: jiraProjectName)
                     ]) {
                         sh 'io --stage io'
                     }
