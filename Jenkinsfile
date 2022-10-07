@@ -6,7 +6,7 @@ import groovy.json.JsonSlurper
 def fileBranchName = 'master'
 // IO Environment
 def ioPOCId = 'Irfan-Test'
-def ioProjectName = 'my-insecure-bank'
+def ioProjectName = 'Irfa-Test'
 def ioWorkflowEngineVersion = '2022.7.0'
 def ioServerURL = "https://io11.codedx.synopsys.com"
 def ioRunAPI = "/api/ioiq/api/orchestration/runs/"
