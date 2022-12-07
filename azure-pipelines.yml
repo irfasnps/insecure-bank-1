@@ -9,7 +9,8 @@ jobs:
 
     variables:
       #IO details
-      SYNOPSYS_AZURE_TOOLS_REPO: https://github.com/synopsys-sig-community/synopsys-azure-tools
+      IO_SERVER_URL: "https://io11.codedx.synopsys.com/signin"
+      SYNOPSYS_AZURE_TOOLS_REPO: "https://github.com/synopsys-sig-community/synopsys-azure-tools"
       PERSONA: developer
       RELEASE: minor
       MANIFEST_TYPE: yml
@@ -30,7 +31,7 @@ jobs:
       POLARIS_PROJECT_NAME: "aws-insecure-bank"
       POLARIS_BRANCH_NAME: origin/master
       #CodeDX details
-      CODEDX_SERVER_URL: https://poc11.codedx.synopsys.com/codedx
+      CODEDX_SERVER_URL: "https://poc11.codedx.synopsys.com/codedx"
       CODEDX_PROJECT_ID: 1
 
     steps:
@@ -43,6 +44,7 @@ jobs:
           echo "Trigger IO"
           wget "https://raw.githubusercontent.com/synopsys-sig/io-artifacts/2021.12.0.12-alpha/prescription.sh"
           chmod +x prescription.sh
+          echo $(IO_SERVER_URL)
           ./prescription.sh --release.type="$(RELEASE)" --persona="$(PERSONA)" --stage="IO" --io.url="$(IO_SERVER_URL)" --io.token="$(IO_ACCESS_TOKEN)" --workflow.url="$(WORKFLOW_ENGINE_SERVER_URL)" \
             --project.name="$(PROJECT_NAME)" --scm.type="$(SCM_TYPE)" --scm.owner="$(SCM_OWNER)" --scm.repo.name="$(SCM_REPO_NAME)" --scm.branch.name="$(SCM_BRANCH_NAME)" --github.username="$(GITHUB_USERNAME)" \
             --polaris.project.name="$(POLARIS_PROJECT_NAME)" --polaris.url="$(POLARIS_SERVER_URL)" \
