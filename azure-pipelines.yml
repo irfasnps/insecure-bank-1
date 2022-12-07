@@ -13,24 +13,24 @@ jobs:
       PERSONA: developer
       RELEASE: minor
       MANIFEST_TYPE: yml
-      PROJECT_NAME: "devsecops-test/github-io-sample"
+      PROJECT_NAME: "Irfa-Test"
       #SCM details
       SCM_TYPE: github
-      SCM_OWNER: devsecops-test
-      SCM_REPO_NAME: github-io-sample
+      SCM_OWNER: mohammedirfanma
+      SCM_REPO_NAME: insecure-bank
       SCM_BRANCH_NAME: master
-      GITHUB_USERNAME: rahulguna10
+      GITHUB_USERNAME: mohammedirfanma
       #Blackduck details
-      BLACKDUCK_SERVER_URL: https://bizdevhub.blackducksoftware.com
-      BLACKDUCK_PROJECT_NAME: "devsecops-test/github-io-sample:1.0"
-      BD_PROJECT_NAME: "devsecops-test/github-io-sample"
+      BLACKDUCK_SERVER_URL: "https://testing.blackduck.synopsys.com"
+      BLACKDUCK_PROJECT_NAME: "my-insecure-bank"
+      BD_PROJECT_NAME: "my-insecure-bank"
       BLACKDUCK_PROJECT_VERSION: 1.0
       #Polaris details
-      POLARIS_SERVER_URL: "https://csprod.polaris.synopsys.com"
-      POLARIS_PROJECT_NAME: "sig-devsecops/github-io-sample"
+      POLARIS_SERVER_URL: "https://sipse.polaris.synopsys.com"
+      POLARIS_PROJECT_NAME: "aws-insecure-bank"
       POLARIS_BRANCH_NAME: origin/master
       #CodeDX details
-      CODEDX_SERVER_URL: http://23.99.131.170:8080/codedx
+      CODEDX_SERVER_URL: https://poc11.codedx.synopsys.com/codedx
       CODEDX_PROJECT_ID: 1
 
     steps:
