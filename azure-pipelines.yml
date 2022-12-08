@@ -9,7 +9,7 @@ jobs:
 
     variables:
       #IO details
-      IO_SERVER_URL: "https://io11.codedx.synopsys.com"
+      IO_SERVER_URL: "https://io11.codedx.synopsys.com/api/ioiq"
       SYNOPSYS_AZURE_TOOLS_REPO: "https://github.com/synopsys-sig-community/synopsys-azure-tools"
       PERSONA: developer
       RELEASE: minor
