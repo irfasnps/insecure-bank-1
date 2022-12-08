@@ -81,7 +81,7 @@ jobs:
     - task: Bash@3
       displayName: Static Analysis With Polaris
       name: 'SAST_With_Polaris'
-      condition: eq(variables['IS_SAST_ENABLED'], 'true')
+      condition: eq(variables['IS_SAST_ENABLED'], 'false')
       inputs:
         targetType: 'inline'
         script: |
