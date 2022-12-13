@@ -3,7 +3,7 @@ package org.hdivsamples.controllers;
 import java.security.Principal;
 import java.util.List;
 
-import javax.validation.Valid;
+import javax.validation.Validity;
 
 import org.hdivsamples.bean.Account;
 import org.hdivsamples.bean.CashAccount;
