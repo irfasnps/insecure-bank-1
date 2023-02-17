@@ -15,7 +15,7 @@ def ioRunAPI = "/api/ioiq/api/orchestration/runs/"
 def gitHubPOCId = 'Irfasnps-Github'
 def gitHubOwner = 'irfasnps'
 def scmBranch = fileBranchName
-def scmRepoName = 'insecure-bank'
+def scmRepoName = 'insecure-bank-1'
 def scmRevisionDate = ''
 
 // AST - Polaris
