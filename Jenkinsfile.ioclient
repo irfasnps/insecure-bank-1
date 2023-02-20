@@ -152,15 +152,15 @@ pipeline {
 
                         // Update security flags based on prescription
                         isSASTEnabled = prescriptionJSON.data.prescription.security.activities.sast.enabled
-                        isSASTPlusMEnabled = prescriptionJSON.data.prescription.security.activities.sastPlusM.enabled
+                        //isSASTPlusMEnabled = prescriptionJSON.data.prescription.security.activities.sastPlusM.enabled
                         isSCAEnabled = prescriptionJSON.data.prescription.security.activities.sca.enabled
                         isDASTEnabled = prescriptionJSON.data.prescription.security.activities.dast.enabled
                         isDASTPlusMEnabled = prescriptionJSON.data.prescription.security.activities.dastPlusM.enabled
                         isImageScanEnabled = prescriptionJSON.data.prescription.security.activities.imageScan.enabled
-                        isNetworkScanEnabled = prescriptionJSON.data.prescription.security.activities.NETWORK.enabled
-                        isCloudReviewEnabled = prescriptionJSON.data.prescription.security.activities.CLOUD.enabled
-                        isThreatModelEnabled = prescriptionJSON.data.prescription.security.activities.THREATMODEL.enabled
-                        isInfraReviewEnabled = prescriptionJSON.data.prescription.security.activities.INFRA.enabled
+                        isNetworkScanEnabled = prescriptionJSON.data.prescription.security.activities.network.enabled
+                        isCloudReviewEnabled = prescriptionJSON.data.prescription.security.activities.cloud.enabled
+                        isThreatModelEnabled = prescriptionJSON.data.prescription.security.activities.threatmodel.enabled
+                        isInfraReviewEnabled = prescriptionJSON.data.prescription.security.activities.infra.enabled
 
                         if(isSASTEnabled || isSCAEnabled || isDASTEnabled || isImageScanEnabled) {
                             isASTEnabled = true
