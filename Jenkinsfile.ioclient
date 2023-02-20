@@ -105,7 +105,7 @@ pipeline {
             steps {
                 script {
                     sh '/var/lib/jenkins/io -v'
-
+                    echo ${IO_ACCESS_TOKEN} ${GITHUB_ACCESS_TOKEN} =${CODE_DX_ACCESS_TOKEN}
                     // Determine prescription
                     sh "/var/lib/jenkins/io --stage io \
                     persona.type=${ioPersonaType}  \
