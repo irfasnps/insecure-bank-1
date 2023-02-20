@@ -126,7 +126,7 @@ pipeline {
                     codedx.instanceurl=${codeDxInstanceURL} \
                     codedx.projectid=${codeDxProjectId} \
                     "
-
+                    echo "reached here!....."
                     // IO-IQ will write the prescription to io_state JSON
                     if (fileExists('io_state.json')) {
                         def prescriptionJSON = readJSON file: 'io_state.json'
