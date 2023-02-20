@@ -30,7 +30,7 @@ def gitHubOwner = 'irfasnps'
 def polarisInstanceURL = 'https://sipse.polaris.synopsys.com/'
 def polarisConfigName = 'polaris-pwc-access-token'
 def polarisProjectName = 'PWC-INSECURE-BANK'
-def polarisBranchName = 'master'
+def polarisBranchName = 'main'
 def polarisCredentialsId = 'polaris-pwc-access-token'
 
 // AST - Black Duck
