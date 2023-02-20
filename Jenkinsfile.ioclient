@@ -3,7 +3,7 @@ import groovy.json.JsonSlurper
 
 // IO Environment
 def ioPersonaType = 'master'
-def ioConfigName = 'PWC_INSECURE_BANK'
+def ioConfigName = 'io-pwc-access-token'
 def ioProjectName = 'PWC_INSECURE_BANK'
 def ioWorkflowEngineVersion = '2022.12.0'
 def ioServerURL = "https://io305.codedx.synopsys.com"
