@@ -246,6 +246,14 @@ pipeline {
                 input message: 'High risk score or significant code-change detected. Perform manual secure code-review.'
             }
         }
+        stage('DAST') {
+            when {
+                expression { isDASTEnabled }
+            }
+            steps {
+                echo 'Running DAST using WhiteHat'
+            }
+        } 
         // Run IO's Workflow Engine
         stage('Workflow') {
             steps {
@@ -289,7 +297,7 @@ pipeline {
             }
         }
     }
-
+    
     post {
         always {
             // Archive Results/Logs
