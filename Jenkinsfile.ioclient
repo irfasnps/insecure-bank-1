@@ -30,7 +30,7 @@ def gitHubOwner = 'irfasnps'
 def polarisInstanceURL = 'https://sipse.polaris.synopsys.com/'
 def polarisConfigName = 'polaris-pwc-access-token'
 def polarisProjectName = 'PWC-INSECURE-BANK'
-def polarisBranchName = 'main'
+def polarisBranchName = 'master'
 def polarisCredentialsId = 'polaris-pwc-access-token'
 
 // AST - Black Duck
@@ -254,7 +254,7 @@ pipeline {
                 script {
                     echo 'Running IO Workflow'
                     sh "/var/lib/jenkins/io --stage workflow --state io_state.json \
-                        workflow.engine.version=${ioWorkflowEngineVersion} --form 'branchName=${scmBranch}' \
+                        workflow.engine.version=${ioWorkflowEngineVersion}' \
                     "
                 }
             }
