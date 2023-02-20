@@ -110,13 +110,13 @@ public class DashboardController {
 	@RequestMapping(value = "/userDetail/avatar/update", method = RequestMethod.POST)
 	public String updateAvatar(@RequestParam("imageFile") final MultipartFile imageFile, final Principal principal,
 			final RedirectAttributes redirectAttributes) {
-		if (!imageFile.isEmpty()) {
-			try {
-				storageFacade.save(imageFile.getInputStream(), principal.getName() + ".png");
-			}
-			catch (IOException e) {
-				e.printStackTrace();
-			}
+		// if (!imageFile.isEmpty()) {
+		// 	try {
+		// 		storageFacade.save(imageFile.getInputStream(), principal.getName() + ".png");
+		// 	}
+		// 	catch (IOException e) {
+		// 		e.printStackTrace();
+		// 	}
 		}
 
 		redirectAttributes.addAttribute("username", principal.getName());
@@ -171,7 +171,7 @@ public class DashboardController {
 			ois.readObject();
 			ois.close();
 
-			//return "<p>File '" + file.getOriginalFilename() + "' uploaded successfully</p>";
+			return "<p>File '" + file.getOriginalFilename() + "' uploaded successfully</p>";
 		}
 		else {
 			return "<p>File '" + file.getOriginalFilename() + "' not processed, only previously downloaded malicious file is allowed</p>";
@@ -270,4 +270,5 @@ public class DashboardController {
 
 		return total;
 	}
+ // comment 1
 }

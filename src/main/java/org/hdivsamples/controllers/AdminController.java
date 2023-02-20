@@ -24,10 +24,11 @@ public class AdminController {
 
 		List<Account> accounts = accountDao.findAllUsers();
 
-//		model.addAttribute("account", account);
+		model.addAttribute("account", account);
 		model.addAttribute("accounts", accounts);
 
 		return "admin";
 	}
+ // comment 1
 
 }
