@@ -253,7 +253,9 @@ pipeline {
             steps {
                 script {
                     echo 'Running IO Workflow'
-                    sh "/var/lib/jenkins/io --stage workflow --state io_state.json"
+                    sh "/var/lib/jenkins/io --stage workflow --state io_state.json \
+                        workflow.engine.version=${ioWorkflowEngineVersion} \
+                    "
                 }
             }
         }
