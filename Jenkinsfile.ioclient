@@ -185,69 +185,78 @@ pipeline {
         //         }
         //     }
         // }
+        if(isASTEnabled == true ){
+            stage('SAST-Polaris') {
+                when {
+                    expression { isSASTEnabled }
+                }
+                environment {
+                    POLARIS_AUTH_TOKEN = credentials("${polarisCredentialsId}")
+                }
+                steps {
+                    script {
+                        echo 'Running SAST using Polaris'
+                        sh "/var/lib/jenkins/io --stage execution \
+                            --state io_state.json \
+                            polaris.authtoken=${POLARIS_AUTH_TOKEN} \
+                            polaris.instanceurl=${polarisInstanceURL} \
+                            polaris.projectname=${polarisProjectName} \
+                            polaris.branchname=${polarisBranchName} \
+                        "
+                        def currentDate = sh(returnStdout: true, script: 'date +%Y-%m-%d').trim()
+                        def prescriptionJSON = readJSON file: 'io_state.json'
+                        prescriptionJSON.data.prescription.security.activities.sast.successful = true
+                        prescriptionJSON.data.prescription.security.activities.sast.lastScanDate = currentDate
+                        writeJSON file: 'io_state.json', json: prescriptionJSON
+                    }
+                }
+            }
 
-        stage('SAST-Polaris') {
-            when {
-                expression { isSASTEnabled }
+            // SCA
+            stage('SCA') {
+                when {
+                    expression { isSCAEnabled }
+                }
+                environment {
+                    BLACK_DUCK_AUTH_TOKEN = credentials("${blackDuckConfigName}")
+                }
+                steps {
+                    script {
+                        echo 'Running SCA using BlackDuck'
+                        sh "/var/lib/jenkins/io --stage execution --state io_state.json \
+                            blackduck.authtoken=${BLACK_DUCK_AUTH_TOKEN} \
+                            blackduck.instanceurl=${blackDuckInstanceURL} \
+                            blackduck.projectname=${blackDuckProjectName} \
+                            blackduck.projectversion=${blackDuckProjectVersion} \
+                        "
+                        def currentDate = sh(returnStdout: true, script: 'date +%Y-%m-%d').trim()
+                        def prescriptionJSON = readJSON file: 'io_state.json'
+                        prescriptionJSON.data.prescription.security.activities.sca.successful = true
+                        prescriptionJSON.data.prescription.security.activities.sca.lastScanDate = currentDate
+                        writeJSON file: 'io_state.json', json: prescriptionJSON
+                    }
+                }
             }
-            environment {
-                POLARIS_AUTH_TOKEN = credentials("${polarisCredentialsId}")
-            }
-            steps {
-                script {
-                    echo 'Running SAST using Polaris'
-                    sh "/var/lib/jenkins/io --stage execution \
-                        --state io_state.json \
-                        polaris.authtoken=${POLARIS_AUTH_TOKEN} \
-                        polaris.instanceurl=${polarisInstanceURL} \
-                        polaris.projectname=${polarisProjectName} \
-                        polaris.branchname=${polarisBranchName} \
-                    "
-                    def currentDate = sh(returnStdout: true, script: 'date +%Y-%m-%d').trim()
-                    def prescriptionJSON = readJSON file: 'io_state.json'
-                    prescriptionJSON.data.prescription.security.activities.sast.successful = true
-                    prescriptionJSON.data.prescription.security.activities.sast.lastScanDate = currentDate
-                    writeJSON file: 'io_state.json', json: prescriptionJSON
+
+            // Manual SAST Stage
+            stage('SAST+M') {
+                when {
+                    expression { isSASTPlusMEnabled }
+                }
+                steps {
+                    input message: 'High risk score or significant code-change detected. Perform manual secure code-review.'
                 }
             }
         }
-
-        // SCA
-        stage('SCA') {
-            when {
-                expression { isSCAEnabled }
-            }
-            environment {
-                BLACK_DUCK_AUTH_TOKEN = credentials("${blackDuckConfigName}")
-            }
-            steps {
-                script {
-                    echo 'Running SCA using BlackDuck'
-                    sh "/var/lib/jenkins/io --stage execution --state io_state.json \
-                        blackduck.authtoken=${BLACK_DUCK_AUTH_TOKEN} \
-                        blackduck.instanceurl=${blackDuckInstanceURL} \
-                        blackduck.projectname=${blackDuckProjectName} \
-                        blackduck.projectversion=${blackDuckProjectVersion} \
-                    "
-                    def currentDate = sh(returnStdout: true, script: 'date +%Y-%m-%d').trim()
-                    def prescriptionJSON = readJSON file: 'io_state.json'
-                    prescriptionJSON.data.prescription.security.activities.sca.successful = true
-                    prescriptionJSON.data.prescription.security.activities.sca.lastScanDate = currentDate
-                    writeJSON file: 'io_state.json', json: prescriptionJSON
+        else {
+            stage('skipped') {
+                steps{
+                    script{
+                        echo 'Skipped because AST Tools are not Enabled'
+                    }
                 }
             }
         }
-
-        // Manual SAST Stage
-        stage('SAST+M') {
-            when {
-                expression { isSASTPlusMEnabled }
-            }
-            steps {
-                input message: 'High risk score or significant code-change detected. Perform manual secure code-review.'
-            }
-        }
-
         // Run IO's Workflow Engine
         stage('Workflow') {
             steps {
