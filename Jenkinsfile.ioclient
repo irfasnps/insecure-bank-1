@@ -36,7 +36,7 @@ def polarisCredentialsId = 'polaris-csprod-rahul'
 // AST - Black Duck
 def blackDuckInstanceURL = 'https://poc305.blackduck.synopsys.com'
 def blackDuckConfigName = 'blackduck-pwc-access-token'
-def blackDuckProjectName = 'PWC-INSECURE-BANK'
+def blackDuckProjectName = 'insecure-bank-1'
 def blackDuckProjectVersion = '1.0'
 
 // BTS Configuration
@@ -173,17 +173,17 @@ pipeline {
             }
         }
 
-        stage('SAST-Sigma') {
-            when {
-                expression { isSASTEnabled }
-            }
-            steps {
-                script {
-                    echo 'Running SAST using Sigma'
-                    //sh "/var/lib/jenkins/io --stage execution --state io_state.json sigma.executablepath=${sigmaPath}"
-                }
-            }
-        }
+        // stage('SAST-Sigma') {
+        //     when {
+        //         expression { isSASTEnabled }
+        //     }
+        //     steps {
+        //         script {
+        //             echo 'Running SAST using Sigma'
+        //             //sh "/var/lib/jenkins/io --stage execution --state io_state.json sigma.executablepath=${sigmaPath}"
+        //         }
+        //     }
+        // }
 
         stage('SAST-Polaris') {
             when {
