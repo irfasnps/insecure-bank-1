@@ -185,7 +185,7 @@ pipeline {
         //         }
         //     }
         // }
-        if(isASTEnabled == true ){
+        if(isASTEnabled){
             stage('SAST-Polaris') {
                 when {
                     expression { isSASTEnabled }
