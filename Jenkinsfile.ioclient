@@ -155,7 +155,7 @@ pipeline {
                         //isSASTPlusMEnabled = prescriptionJSON.data.prescription.security.activities.sastPlusM.enabled
                         isSCAEnabled = prescriptionJSON.data.prescription.security.activities.sca.enabled
                         isDASTEnabled = prescriptionJSON.data.prescription.security.activities.dast.enabled
-                        isDASTPlusMEnabled = prescriptionJSON.data.prescription.security.activities.dastPlusM.enabled
+                        //isDASTPlusMEnabled = prescriptionJSON.data.prescription.security.activities.dastPlusM.enabled
                         isImageScanEnabled = prescriptionJSON.data.prescription.security.activities.imageScan.enabled
                         isNetworkScanEnabled = prescriptionJSON.data.prescription.security.activities.network.enabled
                         isCloudReviewEnabled = prescriptionJSON.data.prescription.security.activities.cloud.enabled
