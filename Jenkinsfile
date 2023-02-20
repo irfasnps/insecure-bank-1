@@ -21,7 +21,7 @@ def scmRevisionDate = ''
 // AST - Polaris
 def polarisConfigName = 'polaris-common-demo'
 def polarisProjectName = 'PWC-INSECURE-BANK'
-def polarisBranchName = fileBranchName
+def polarisBranchName = 'main'
 
 // AST - Black Duck
 def blackDuckPOCId = 'blackduck-pwc-at'
