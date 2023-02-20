@@ -132,9 +132,9 @@ pipeline {
                         def prescriptionJSON = readJSON file: 'io_state.json'
 
                         // Pretty-print Prescription JSON
-                        // def prescriptionJSONFormat = JsonOutput.toJson(prescriptionJSON)
-                        // prettyJSON = JsonOutput.prettyPrint(prescriptionJSONFormat)
-                        // echo("${prettyJSON}")
+                        def prescriptionJSONFormat = JsonOutput.toJson(prescriptionJSON)
+                        prettyJSON = JsonOutput.prettyPrint(prescriptionJSONFormat)
+                        echo("${prettyJSON}")
 
                         // Use the run Id from IO IQ to get detailed message/explanation on prescription
                         runId = prescriptionJSON.data.io.run.id
