@@ -2,7 +2,7 @@ import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
 
 // IO Environment
-def ioPersonaType = 'main'
+def ioPersonaType = 'master'
 def ioConfigName = 'io-pwc-access-token'
 def ioProjectName = 'PWC_INSECURE_BANK'
 def ioWorkflowEngineVersion = '2022.12.0'
@@ -30,7 +30,7 @@ def gitHubOwner = 'irfasnps'
 def polarisInstanceURL = 'https://sipse.polaris.synopsys.com/'
 def polarisConfigName = 'polaris-pwc-access-token'
 def polarisProjectName = 'PWC-INSECURE-BANK'
-def polarisBranchName = 'origin/main'
+def polarisBranchName = 'origin/master'
 def polarisCredentialsId = 'polaris-pwc-access-token'
 
 // AST - Black Duck
