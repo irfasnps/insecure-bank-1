@@ -2,7 +2,7 @@ import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
 
 // IO Environment
-def ioPersonaType = 'master'
+def ioPersonaType = 'main'
 def ioConfigName = 'io-pwc-access-token'
 def ioProjectName = 'PWC_INSECURE_BANK'
 def ioWorkflowEngineVersion = '2022.12.0'
