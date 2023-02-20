@@ -131,7 +131,7 @@ pipeline {
                     if (fileExists('io_state.json')) {
                         def prescriptionJSON = readJSON file: 'io_state.json'
 
-                        Pretty-print Prescription JSON
+                        //Pretty-print Prescription JSON
                         def prescriptionJSONFormat = JsonOutput.toJson(prescriptionJSON)
                         prettyJSON = JsonOutput.prettyPrint(prescriptionJSONFormat)
                         echo("${prettyJSON}")
