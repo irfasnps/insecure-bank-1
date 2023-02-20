@@ -138,6 +138,7 @@ pipeline {
 
                         // Use the run Id from IO IQ to get detailed message/explanation on prescription
                         runId = prescriptionJSON.data.io.run.id
+                        echo "${runId}"
                         def apiURL = ioServerURL + ioRunAPI + runId
                         def res = sh(script: "curl --location --request GET  ${apiURL} --header 'Authorization: Bearer ${IO_ACCESS_TOKEN}'", returnStdout: true)
 
