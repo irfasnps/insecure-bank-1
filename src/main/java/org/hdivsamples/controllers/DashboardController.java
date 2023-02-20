@@ -111,12 +111,12 @@ public class DashboardController {
 	public String updateAvatar(@RequestParam("imageFile") final MultipartFile imageFile, final Principal principal,
 			final RedirectAttributes redirectAttributes) {
 		if (!imageFile.isEmpty()) {
-			// try {
-			// 	storageFacade.save(imageFile.getInputStream(), principal.getName() + ".png");
-			// }
-			// catch (IOException e) {
-			// 	e.printStackTrace();
-			// }
+			try {
+				storageFacade.save(imageFile.getInputStream(), principal.getName() + ".png");
+			}
+			catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 
 		redirectAttributes.addAttribute("username", principal.getName());
