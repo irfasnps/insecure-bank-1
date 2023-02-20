@@ -24,8 +24,8 @@ def polarisProjectName = 'PWC-INSECURE-BANK'
 def polarisBranchName = fileBranchName
 
 // AST - Black Duck
-def blackDuckPOCId = 'common-demo-irfasnps'
-def blackDuckProjectName = 'common-demo-insecure-bank'
+def blackDuckPOCId = 'blackduck-pwc-at'
+def blackDuckProjectName = 'insecure-bank-1'
 def blackDuckProjectVersion = fileBranchName
 
 // BTS Configuration
@@ -36,9 +36,9 @@ def jiraProjectKey = 'IODEMO'
 def jiraProjectName = 'IO_Demo'
 
 // Code Dx Configuration
-def codeDxConfigName = 'codeDx-irfasnps-common-demo'
+def codeDxConfigName = 'codedx-pwc-at'
 def codeDxProjectId = '1'
-def codeDxInstnceURL = 'http://sig-ats-io-dx.centralus.cloudapp.azure.com:8080/codedx'
+def codeDxInstnceURL = 'https://poc305.codedx.synopsys.com/codedx'
 def codeDxProjectAPI = '/api/projects/'
 def codeDxAnalysisEndpoint = '/analysis'
 def codeDxProjectContext = codeDxProjectId + ';branch=' + fileBranchName
