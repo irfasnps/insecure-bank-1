@@ -182,6 +182,15 @@ pipeline {
             }
         }
 
+               // SCA
+        stage('DAST') {
+            when {
+                expression { isSCAEnabled }
+            }
+            steps {
+                echo 'Running DAST using WhiteHat'
+            }
+        } 
         // Run IO's Workflow Engine
         stage('Workflow') {
             environment {
