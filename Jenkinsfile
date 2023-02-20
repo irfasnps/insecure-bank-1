@@ -144,7 +144,7 @@ pipeline {
                 expression { isSASTEnabled }
             }
             steps {
-                echo 'Running SAST using Polaris'
+                echo 'Running SAST using Polaris!'
                 synopsysIO(connectors: [
                     polaris(
                         configName: polarisConfigName, 
