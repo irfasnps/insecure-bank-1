@@ -132,23 +132,23 @@ pipeline {
                         def prescriptionJSON = readJSON file: 'io_state.json'
 
                         // Pretty-print Prescription JSON
-                        def prescriptionJSONFormat = JsonOutput.toJson(prescriptionJSON)
-                        prettyJSON = JsonOutput.prettyPrint(prescriptionJSONFormat)
-                        echo("${prettyJSON}")
+                        // def prescriptionJSONFormat = JsonOutput.toJson(prescriptionJSON)
+                        // prettyJSON = JsonOutput.prettyPrint(prescriptionJSONFormat)
+                        // echo("${prettyJSON}")
 
                         // Use the run Id from IO IQ to get detailed message/explanation on prescription
-                        runId = prescriptionJSON.data.io.run.id
-                        echo "${runId}"
-                        def apiURL = ioServerURL + ioRunAPI + runId
-                        def res = sh(script: "curl --location --request GET  ${apiURL} --header 'Authorization: Bearer ${IO_ACCESS_TOKEN}'", returnStdout: true)
+                        // runId = prescriptionJSON.data.io.run.id
+                        // echo "${runId}"
+                        // def apiURL = ioServerURL + ioRunAPI + runId
+                        // def res = sh(script: "curl --location --request GET  ${apiURL} --header 'Authorization: Bearer ${IO_ACCESS_TOKEN}'", returnStdout: true)
 
-                        def jsonSlurper = new JsonSlurper()
-                        def ioRunJSON = jsonSlurper.parseText(res)
-                        def ioRunJSONFormat = JsonOutput.toJson(ioRunJSON)
-                        def ioRunJSONPretty = JsonOutput.prettyPrint(ioRunJSONFormat)
-                        print("==================== IO-IQ Explanation ======================")
-                        echo("${ioRunJSONPretty}")
-                        print("==================== IO-IQ Explanation ======================")
+                        // def jsonSlurper = new JsonSlurper()
+                        // def ioRunJSON = jsonSlurper.parseText(res)
+                        // def ioRunJSONFormat = JsonOutput.toJson(ioRunJSON)
+                        // def ioRunJSONPretty = JsonOutput.prettyPrint(ioRunJSONFormat)
+                        // print("==================== IO-IQ Explanation ======================")
+                        // echo("${ioRunJSONPretty}")
+                        // print("==================== IO-IQ Explanation ======================")
 
                         // Update security flags based on prescription
                         isSASTEnabled = prescriptionJSON.data.prescription.security.activities.sast.enabled
