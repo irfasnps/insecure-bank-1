@@ -11,6 +11,6 @@ public class HelpController {
 	@RequestMapping
 	public String admin(final Model model) {
 
-		//return "help";
+		return "help";
 	}
 }
