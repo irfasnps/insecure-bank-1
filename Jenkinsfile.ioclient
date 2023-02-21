@@ -246,6 +246,7 @@ pipeline {
                 input message: 'High risk score or significant code-change detected. Perform manual secure code-review.'
             }
         }
+        // Running DAST Stage
         stage('DAST') {
             when {
                 expression { isDASTEnabled }
@@ -254,6 +255,51 @@ pipeline {
                 echo 'Running DAST using WhiteHat'
             }
         } 
+        // Running Image Scan Stage
+        stage('ImageScan') {
+            when {
+                expression { isImageScanEnabled }
+            }
+            steps {
+                echo 'Running Image Scan'
+            }
+        }
+        // Running Network Scan Stage
+        stage('Network Scan') {
+            when {
+                expression { isNetworkScanEnabled }
+            }
+            steps {
+                echo 'Running Network Scan'
+            }
+        } 
+        // Running Cloud Review Stage
+        stage('Cloud Review') {
+            when {
+                expression { isCloudReviewEnabled }
+            }
+            steps {
+                echo 'Running Cloud Review'
+            }
+        }
+        // Running Threat Model Stage
+        stage('Thread Model Stage') {
+            when {
+                expression { isThreatModelEnabled }
+            }
+            steps {
+                echo 'Running Threat Model Stage'
+            }
+        }
+        // Running Infra Review Stage
+        stage('Infra Review Stage') {
+            when {
+                expression { isInfraReviewEnabled }
+            }
+            steps {
+                echo 'Running Infra Review Stage'
+            }
+        }
         // Run IO's Workflow Engine
         stage('Workflow') {
             steps {

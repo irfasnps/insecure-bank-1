@@ -48,7 +48,7 @@ public class ActivityController {
 	public String activity(final Model model, final Principal principal) {
 
 		CashAccount cashAccount = new CashAccount();
-		Account account = accountDao.findUsersByUsername(principal.getName()).get(0);
+		//Account account = accountDao.findUsersByUsername(principal.getName()).get(0);
 		List<CashAccount> cashAccounts = cashaccountDao.findCashAccountsByUsername(principal.getName());
 
 		List<Transaction> firstCashAccountTransfers = activityDao.findTransactionsByCashAccountNumber(cashAccounts.get(0).getNumber());
