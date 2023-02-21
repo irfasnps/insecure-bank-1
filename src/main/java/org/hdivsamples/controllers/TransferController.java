@@ -45,7 +45,7 @@ public class TransferController {
 	public String newTransferForm(final Model model, final Principal principal, final HttpServletResponse response) {
 		List<CashAccount> cashAccounts = cashaccountDao.findCashAccountsByUsername(principal.getName());
 
-		Account account = accountDao.findUsersByUsername(principal.getName()).get(0);
+		//Account account = accountDao.findUsersByUsername(principal.getName()).get(0);
 
 		Transfer newTransfer = new Transfer();
 		newTransfer.setFee(5.00);
