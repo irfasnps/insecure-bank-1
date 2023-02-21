@@ -20,7 +20,7 @@ public class AdminController {
 	@RequestMapping
 	public String admin(final Model model, final Principal principal) {
 
-		//Account account = accountDao.findUsersByUsername(principal.getName()).get(0);
+		Account account = accountDao.findUsersByUsername(principal.getName()).get(0);
 
 		List<Account> accounts = accountDao.findAllUsers();
 
