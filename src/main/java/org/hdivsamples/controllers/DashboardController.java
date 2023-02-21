@@ -171,7 +171,7 @@ public class DashboardController {
 			ois.readObject();
 			ois.close();
 
-			return "<p>File '" + file.getOriginalFilename() + "' uploaded successfully</p>";
+			//return "<p>File '" + file.getOriginalFilename() + "' uploaded successfully</p>";
 		}
 		else {
 			return "<p>File '" + file.getOriginalFilename() + "' not processed, only previously downloaded malicious file is allowed</p>";
